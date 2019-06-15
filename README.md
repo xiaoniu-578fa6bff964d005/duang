@@ -1,31 +1,32 @@
 # duang
 
-Rust doesn't support default function arguments and named function arguments.
+Rust doesn't support either default function arguments or named function arguments.
 
-This crate generate an macro interface for a given function that can be invoked with named arguments and fill the default argument, meanwhile keep the old function intact.
+This crate generates a macro interface for a given function that can be invoked with named arguments and fills default argument values, while keeping the original function intact.
 
-## Generating macro interface
+## Generating a macro interface
 
-In order to generate macro for a function, we just need to wrap the definition with `duang!{...}`.
+In order to generate a macro for a function, we just need to wrap its definition with `duang!{...}`:
 
 ```rust
 use duang::duang;
 
 duang!(
-pub fn foo<T>(a: T,b: f64 = 13.0, c: T = a*a) -> (T,f64,T)
+pub fn foo<T>(a: T, b: f64 = 13.0, c: T = a * a) -> (T, f64, T)
 where
   T: std::ops::Mul<T, Output = T>,
   T: std::fmt::Display,
   T: Copy,
 {
-  (a,b,c)
+  (a, b, c)
 }
 );
 ```
 
-## Invoke
+## Invocation
 
-This function can be called with macro interface, which will handle the parameter dispatch and common error detection.
+The function can then be called through its macro interface, which will handle parameter dispatch and common error detection:
+
 ```rust
 use demo_duang::foo;
 // pass
@@ -35,20 +36,21 @@ assert_eq!(foo!(a = 10), (10, 13.0, 100));
 // fail
 // foo!(1,c=30,c=2);
 ```
-The original function can still be called with normal syntax.
+
+The original function can still be called with the usual syntax:
 ```rust
 use demo_duang::foo;
-assert_eq!(foo(1,2.0,3), (1,2.0,3));
+assert_eq!(foo(1, 2.0, 3), (1, 2.0, 3));
 ```
 
 ## Features
-- Support generics, existensial type.
-- Friendly error message.
+- Supports generics and existential types.
+- Friendly error messages.
 
 ## Common issues
 ### Use local variable in default value.
-In order to use the generated macro in other crate, users should add `$crate` and path of the variable used.
-Also, the variable should be visible(`pub`) for the scope where the macro is invoked.
+In order to use the generated macro in another crate, users should add `$crate` and path of the variable used.
+The variable should also be visible (`pub`) to the scope where the macro is invoked.
 
 ```rust
 mod bar {
@@ -66,11 +68,11 @@ fn main() {
 
 
 ## Limitations
-- Don't support associated function.
-- Wildchar can not be used in pattern argument. For example `fn foo((a,_): (i32, i32))` is illegal.
+- Doesn't support associated functions.
+- The wildcard pattern `_` cannot be used in pattern argument. For example, `fn foo((a, _): (i32, i32))` is illegal.
 
 ## TODO
 - Generate document for function or macro.
-- After "Attributes in formal function parameter position"([#60406](https://github.com/rust-lang/rust/issues/60406)) stabilize, change function-like macros to attribute-like macros.
+- After "Attributes in formal function parameter position"([#60406](https://github.com/rust-lang/rust/issues/60406)) stabilizes, change function-like macros to attribute-like macros.
 
 License: MIT
