@@ -25,6 +25,7 @@ where
 
 ## Invoke
 
+This function can be called with macro interface, which will handle the parameter dispatch and common error detection.
 ```rust
 use demo_duang::foo;
 // pass
@@ -33,6 +34,11 @@ assert_eq!(foo!(1, c = 30, b = -2.0), (1, -2.0, 30));
 assert_eq!(foo!(a = 10), (10, 13.0, 100));
 // fail
 // foo!(1,c=30,c=2);
+```
+The original function can still be called with normal syntax.
+```rust
+use demo_duang::foo;
+assert_eq!(foo(1,2.0,3), (1,2.0,3));
 ```
 
 ## Features
