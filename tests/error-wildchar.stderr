@@ -1,0 +1,8 @@
+error: expected expression, found reserved identifier `_`
+ --> $DIR/error-wildchar.rs:4:16
+  |
+4 | pub fn foo((_a,_):(i32,i32)) {}
+  |                ^ expected expression
+...
+8 |   foo!((1,2));
+  |   ------------ in this macro invocation

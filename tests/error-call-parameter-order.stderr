@@ -1,0 +1,5 @@
+error: Unnamed parameter must be ahead of named parameter.
+  --> $DIR/error-call-parameter-order.rs:16:12
+   |
+16 |   foo!(a=1,0.1);
+   |   ---------^^^-- in this macro invocation

@@ -1,0 +1,5 @@
+error: Mandatory parameter must be ahead of default parameter.
+ --> $DIR/error-impl-parameter-order.rs:5:35
+  |
+5 | pub fn foo<T>(a: T,b: f64 = 13.0, c: T) -> (T,f64,T)
+  |                                   ^

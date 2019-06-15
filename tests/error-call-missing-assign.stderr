@@ -1,0 +1,8 @@
+error: Mandatory argument is not assigned.
+  --> $DIR/error-call-missing-assign.rs:5:15
+   |
+5  | pub fn foo<T>(a: T,b: f64 = 13.0, c: T = a*a) -> (T,f64,T)
+   |               ^
+...
+16 |   foo!(b=0.1);
+   |   ------------ in this macro invocation

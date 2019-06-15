@@ -1,0 +1,5 @@
+error: Mandatory argument is not assigned a value.
+  --> $DIR/error-only-type-provided-for-mandatory.rs:15:8
+   |
+15 |   foo!(a: i32);
+   |   -----^------- in this macro invocation

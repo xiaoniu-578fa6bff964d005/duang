@@ -1,0 +1,5 @@
+error: Associated function is not supported yet.
+ --> $DIR/error-not-captured-parameter-self.rs:8:17
+  |
+8 |   pub fn foo<T>(&self, a: T,b: f64 = 13.0, c: T = a*a) -> (T,f64,T)
+  |                 ^

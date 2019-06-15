@@ -1,0 +1,23 @@
+error: This argument is assigned more than once.
+  --> $DIR/error-call-repeat-assign.rs:16:14
+   |
+16 |   foo!(1,c=1,c=1);
+   |   -----------^---- in this macro invocation
+
+error: Previously assigned here
+  --> $DIR/error-call-repeat-assign.rs:16:10
+   |
+16 |   foo!(1,c=1,c=1);
+   |   -------^-------- in this macro invocation
+
+error: This argument is assigned more than once.
+  --> $DIR/error-call-repeat-assign.rs:17:14
+   |
+17 |   foo!(1,c=1,a=1);
+   |   -----------^---- in this macro invocation
+
+error: Previously assigned here
+  --> $DIR/error-call-repeat-assign.rs:17:8
+   |
+17 |   foo!(1,c=1,a=1);
+   |   -----^---------- in this macro invocation

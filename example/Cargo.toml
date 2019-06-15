@@ -1,0 +1,8 @@
+[package]
+name = "example"
+version = "0.0.5"
+authors = ["xiaoniu <hzmxn@mail.ustc.edu.cn>"]
+edition = "2018"
+
+[dependencies]
+demo-duang = { version = "0.0.5", path = "../demo-duang"}

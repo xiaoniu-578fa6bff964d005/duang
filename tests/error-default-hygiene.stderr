@@ -1,0 +1,14 @@
+error[E0425]: cannot find value `NUM` in this scope
+  --> $DIR/error-default-hygiene.rs:9:23
+   |
+9  |   pub fn foo(a: i32 = NUM) -> i32
+   |                       ^^^ not found in this scope
+...
+18 |   foo!();
+   |   ------- in this macro invocation
+help: possible candidate is found in another module, you can import it into scope
+   |
+3  | use crate::bar::NUM;
+   |
+
+For more information about this error, try `rustc --explain E0425`.

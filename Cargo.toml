@@ -1,0 +1,31 @@
+[package]
+name = "duang"
+version = "0.1.2"
+authors = ["xiaoniu <hzmxn@mail.ustc.edu.cn>"]
+edition = "2018"
+autotests = false
+license = "MIT"
+description = "Use macro to provide default parameter and named parameter in Rust"
+repository = "https://github.com/xiaoniu-578fa6bff964d005/duang"
+keywords = ["default","named", "parameter"]
+readme = "README.md"
+
+[lib]
+proc-macro = true
+path = "src/lib.rs"
+
+[[test]]
+name = "tests"
+path = "tests/progress.rs"
+
+[dependencies]
+proc-macro2 = "0.4"
+quote = "0.6"
+syn = {version = "0.15", features = ["full", "extra-traits"]}
+
+[dev-dependencies]
+trybuild = "1.0"
+demo-duang = { version = "0.0.5", path="demo-duang" }
+
+[workspace]
+members = ["demo-duang", "example"]
